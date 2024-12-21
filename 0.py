@@ -1,7 +1,7 @@
 import string
 import random
 import time
-s='good word'
+s='goodword'
 random_list=string.ascii_letters+''
 temp=''
 for i,word in enumerate(s):
