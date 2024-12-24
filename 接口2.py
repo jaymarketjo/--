@@ -22,3 +22,9 @@ def return_image():
 #app.run  启动接口
 if __name__=='_main_'
  app.run(host='0.0.0.0',port=5004)
+
+ #flask重定向
+ @app.route('/baidu')
+ def baidu():
+    return redirect("https://www.baidu.com")
+    
