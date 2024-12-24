@@ -27,4 +27,11 @@ if __name__=='_main_'
  @app.route('/baidu')
  def baidu():
     return redirect("https://www.baidu.com")
-    
+
+#json接口并且安装postman
+@app.route("/test/my/first",methods=["post"])
+def first_post():
+    my_json=request.get_json()
+    print(my_json)
+
+    return "good"
