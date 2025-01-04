@@ -23,7 +23,7 @@ def return_image():
 if __name__=='_main_'
  app.run(host='0.0.0.0',port=5004)
 
- #flask重定向
+ #flask重定向 返回百度连接
  @app.route('/baidu')
  def baidu():
     return redirect("https://www.baidu.com")
