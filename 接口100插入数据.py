@@ -19,8 +19,10 @@ def insert_test_data():
     ]
 
     for user_data in test_users:
-        user = User(username=user_data['username'], email=user_data['email'])
-        db.session.add(user)
+        existing_user = User.query.filter_by(username=user_data['username']).first()
+        if existing_user is None:
+            user = User(username=user_data['username'], email=user_data['email'])
+            db.session.add(user)
 
     db.session.commit()
 
