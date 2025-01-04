@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>绘制真实榆树示例</title>
+  <style>
+    canvas {
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="treeCanvas" width="400" height="400"></canvas>
+
+<script>
+  var canvas = document.getElementById('treeCanvas');
+  var ctx = canvas.getContext('2d');
+
+  // 绘制树干
+  drawTrunk(200, 400, 20, 100);
+
+  // 绘制树枝和树叶
+  drawBranch(200, 300, 100, -Math.PI/6, 10, 3);
+  drawBranch(200, 300, 100, 0, 8, 3);
+  drawBranch(200, 300, 100, Math.PI/6, 6, 3);
+
+  function drawTrunk(x, y, width, height) {
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(x - width/2, y - height, width, height);
+
+    // 添加树干顶部的细节
+    var topWidth = width * 0.8; // 控制树干顶部细节的宽度
+    var topHeight = height * 0.2; // 控制树干顶部细节的高度
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(x - topWidth/2, y - height - topHeight, topWidth, topHeight);
+  }
+
+  function drawBranch(x, y, length, angle, thickness, depth) {
+    if (depth === 0) {
+      return;
+    }
+
+    var endX = x + length * Math.sin(angle);
+    var endY = y - length * Math.cos(angle);
+
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(endX, endY);
+    ctx.lineWidth = thickness;
+    ctx.strokeStyle = '#8B4513';
+    ctx.stroke();
+
+    drawBranch(endX, endY, length * 0.7, angle - Math.PI/6, thickness * 0.7, depth - 1);
+    drawBranch(endX, endY, length * 0.7, angle, thickness * 0.7, depth - 1);
+    drawBranch(endX, endY, length * 0.7, angle + Math.PI/6, thickness * 0.7, depth - 1);
+
+    // 绘制树叶
+    drawLeaf(endX, endY);
+  }
+
+  function drawLeaf(x, y) {
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.quadraticCurveTo(x + 10, y + 10, x, y + 20);
+    ctx.quadraticCurveTo(x - 10, y + 10, x, y);
+    ctx.fillStyle = '#228B22';
+    ctx.fill();
+  }
+</script>
+
+</body>
+</html>

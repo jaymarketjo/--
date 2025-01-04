@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>弹出输入账号窗口示例</title>
+  <script>
+    function openAccountInputPopup() {
+      var account = prompt("请输入您的账号：", "");
+      if (account != null) {
+        alert("您输入的账号是：" + account);
+      }
+    }
+  </script>
+</head>
+<body>
+
+<button onclick="openAccountInputPopup()">输入账号</button>
+
+</body>
+</html>
