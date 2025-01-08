@@ -2,9 +2,9 @@
 
 请注意，这只是一个简单的示例，实际的OA系统可能需要更多的功能和安全性措施。以下是一个基本的示例：
 
-首先，您需要安装Node.js和MongoDB，并确保您已经熟悉这些技术的基本概念。
+1.首先，您需要安装Node.js和MongoDB，并确保您已经熟悉这些技术的基本概念。
 
-创建一个新的文件夹，命名为oa-system，并在其中创建以下文件：
+2.创建一个新的文件夹，命名为oa-system，并在其中创建以下文件：
 
 index.html（前端代码）
 <!DOCTYPE html>
@@ -68,21 +68,21 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`服务器运行在 http://localhost:${PORT}`);
 });
-在oa-system文件夹中打开命令行，运行以下命令安装Express和Mongoose：
+3.在oa-system文件夹中打开命令行，运行以下命令安装Express和Mongoose：
 npm install express mongoose
-在oa-system文件夹中创建一个名为app.js的文件，并将上面提供的后端代码复制粘贴到app.js中。
+4.在oa-system文件夹中创建一个名为app.js的文件，并将上面提供的后端代码复制粘贴到app.js中。
 
-在命令行中运行以下命令启动服务器：
+5.在命令行中运行以下命令启动服务器：
 
 node app.js
-打开浏览器，并访问http://localhost:3000，您将看到OA流程管理系统的界面。您可以根据需要在前端代码中添加界面元素，并在后端代码中添加相应的路由和功能。
+6.打开浏览器，并访问http://localhost:3000，您将看到OA流程管理系统的界面。您可以根据需要在前端代码中添加界面元素，并在后端代码中添加相应的路由和功能。
 请注意，这只是一个简单的示例，实际的OA系统可能需要更多的功能，如用户认证、权限管理、流程设计、审批流程等。如果您需要更多帮助或有其他问题，请随时告诉我！
 
 完整代码
 
 当您要求完整的代码时，我将提供一个包含前端和后端代码的完整示例。以下是一个包含前端（HTML、JavaScript）和后端（Node.js、Express、Passport.js、MongoDB）的完整OA流程管理系统示例：
 
-创建一个新的文件夹，命名为oa-system，并在其中创建以下文件：
+1.创建一个新的文件夹，命名为oa-system，并在其中创建以下文件：
 index.html（前端代码）
 <!DOCTYPE html>
 <html lang="en">
@@ -204,14 +204,14 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`服务器运行在 http://localhost:${PORT}`);
 });
-在oa-system文件夹中打开命令行，运行以下命令安装Express、Mongoose、Passport.js、bcryptjs：
+2.在oa-system文件夹中打开命令行，运行以下命令安装Express、Mongoose、Passport.js、bcryptjs：
 npm install express mongoose passport passport-local passport-local-mongoose express-session bcryptjs
-在oa-system文件夹中创建一个名为app.js的文件，并将上面提供的后端代码复制粘贴到app.js中。
+3.在oa-system文件夹中创建一个名为app.js的文件，并将上面提供的后端代码复制粘贴到app.js中。
 
-在oa-system文件夹中创建一个名为public的文件夹，并将index.html文件移动到public文件夹中。
+4.在oa-system文件夹中创建一个名为public的文件夹，并将index.html文件移动到public文件夹中。
 
-在命令行中运行以下命令启动服务器：
+5.在命令行中运行以下命令启动服务器：
 
 node app.js
-打开浏览器，并访问http://localhost:3000，您将看到OA流程管理系统的界面。您可以在输入框中输入用户名和密码进行注册和登录操作。
+6.打开浏览器，并访问http://localhost:3000，您将看到OA流程管理系统的界面。您可以在输入框中输入用户名和密码进行注册和登录操作。
 这个示例提供了一个简单的用户认证功能，您可以根据需要扩展和定制。如果您有任何问题或需要进一步帮助，请随时告诉我！
