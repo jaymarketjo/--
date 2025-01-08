@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点餐系统</title>
+    <style>
+        .menu-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>欢迎来到点餐系统</h1>
+    
+    <div class="menu-item">
+        <input type="checkbox" id="item1" name="item1" value="10">
+        <label for="item1">菜品1 - 10元</label>
+    </div>
+    
+    <div class="menu-item">
+        <input type="checkbox" id="item2" name="item2" value="15">
+        <label for="item2">菜品2 - 15元</label>
+    </div>
+    
+    <div class="menu-item">
+        <input type="checkbox" id="item3" name="item3" value="20">
+        <label for="item3">菜品3 - 20元</label>
+    </div>
+    
+    <h2>总价: <span id="total-price">0</span>元</h2>
+    
+    <script>
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        let totalPrice = 0;
+        
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    totalPrice += parseInt(this.value);
+                } else {
+                    totalPrice -= parseInt(this.value);
+                }
+                document.getElementById('total-price').innerText = totalPrice;
+            });
+        });
+    </script>
+</body>
+</html>

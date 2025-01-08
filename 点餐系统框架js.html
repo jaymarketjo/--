@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点餐系统</title>
+</head>
+<body>
+    <h1>欢迎来到点餐系统</h1>
+    
+    <h2>主菜</h2>
+    <div class="menu-item">
+        <input type="checkbox" id="mainDish1" name="mainDish" value="15">
+        <label for="mainDish1">主菜1 - 15元</label>
+        <input type="number" id="mainDish1Qty" min="0" value="0">
+    </div>
+    
+    <h2>配菜</h2>
+    <div class="menu-item">
+        <input type="checkbox" id="sideDish1" name="sideDish" value="8">
+        <label for="sideDish1">配菜1 - 8元</label>
+        <input type="number" id="sideDish1Qty" min="0" value="0">
+    </div>
+    
+    <h2>饮料</h2>
+    <div class="menu-item">
+        <input type="checkbox" id="drink1" name="drink" value="5">
+        <label for="drink1">饮料1 - 5元</label>
+        <input type="number" id="drink1Qty" min="0" value="0">
+    </div>
+    
+    <button onclick="submitOrder()">提交订单</button>
+    
+    <script>
+        function submitOrder() {
+            let total = 0;
+            
+            // 计算总价
+            total += calculateItemTotal("mainDish1", "mainDish1Qty");
+            total += calculateItemTotal("sideDish1", "sideDish1Qty");
+            total += calculateItemTotal("drink1", "drink1Qty");
+            
+            alert("订单总价为：" + total + "元");
+        }
+        
+        function calculateItemTotal(itemId, qtyId) {
+            const itemCheckbox = document.getElementById(itemId);
+            const itemQty = document.getElementById(qtyId);
+            
+            if (itemCheckbox.checked) {
+                return parseInt(itemCheckbox.value) * parseInt(itemQty.value);
+            }
+            
+            return 0;
+        }
+    </script>
+</body>
+</html>

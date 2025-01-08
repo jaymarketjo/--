@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汽车信息查询机器人</title>
+</head>
+<body>
+    <h1>欢迎使用汽车信息查询机器人</h1>
+    
+    <p>请输入您想要查询的汽车品牌或型号：</p>
+    <input type="text" id="carInput">
+    <button onclick="searchCar()">查询</button>
+    
+    <div id="result"></div>
+    
+    <script>
+        function searchCar() {
+            const carInput = document.getElementById('carInput').value;
+            // 在这里可以调用后端API或者数据库来查询汽车信息
+            // 这里只是一个简单的示例，模拟返回结果
+            const result = findCarInformation(carInput);
+            displayResult(result);
+        }
+        
+        function findCarInformation(carInput) {
+            // 这里模拟返回汽车信息的过程，实际情况下可以调用后端API或数据库
+            // 这里只是一个简单的示例，返回固定的信息
+            if (carInput.toLowerCase() === 'bmw') {
+                return "宝马是一家德国汽车制造商，以生产高档汽车而闻名。";
+            } else if (carInput.toLowerCase() === 'tesla') {
+                return "特斯拉是一家美国电动汽车制造商，专注于电动汽车和可再生能源解决方案。";
+            } else {
+                return "抱歉，找不到关于该汽车的信息。";
+            }
+        }
+        
+        function displayResult(result) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = result;
+        }
+    </script>
+</body>
+</html>
