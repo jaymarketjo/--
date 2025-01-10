@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点餐系统</title>
+</head>
+<body>
+    <h1>欢迎使用点餐系统</h1>
+    
+    <h2>主食类</h2>
+    <button onclick="addToCart('白米饭', 10.00)">白米饭 - 10.00元</button>
+    <button onclick="addToCart('炒面', 12.00)">炒面 - 12.00元</button>
+    <button onclick="addToCart('烤饼', 8.00)">烤饼 - 8.00元</button>
+    <button onclick="addToCart('炒饭', 11.00)">炒饭 - 11.00元</button>
+    <!-- 添加其他主食类菜品按钮 -->
+
+    <h2>购物车</h2>
+    <ul id="cartItems"></ul>
+
+    <h3>总金额: <span id="totalAmount">0.00</span>元</h3>
+
+    <button onclick="submitOrder()">提交订单</button>
+
+    <script>
+        let cart = [];
+        let totalAmount = 0.00;
+
+        function addToCart(item, price) {
+            cart.push({ item, price });
+            totalAmount += price;
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartList = document.getElementById('cartItems');
+            cartList.innerHTML = '';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.item} - ${item.price}元`;
+                cartList.appendChild(li);
+            });
+            document.getElementById('totalAmount').textContent = totalAmount.toFixed(2);
+        }
+
+        function submitOrder() {
+            // 构建订单对象
+            const order = {
+                items: cart.map(item => item.item),
+                totalAmount: totalAmount
+            };
+            // 发送订单到后端
+            fetch('/order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ order })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
