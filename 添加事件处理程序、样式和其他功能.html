@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单元素和按钮</title>
+    <style>
+        /* 添加样式 */
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #f0f0f0; /* 浅灰色 */
+            color: black; /* 黑色文字 */
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #dcdcdc; /* 悬停时的颜色 */
+        }
+    </style>
+</head>
+<body>
+    <h2>表单元素</h2>
+    <form>
+        <label for="dropdown">下拉菜单框：</label>
+        <select id="dropdown">
+            <option value="option1">选项1</option>
+            <option value="option2">选项2</option>
+            <option value="option3">选项3</option>
+        </select>
+        <br>
+
+        <!-- 添加事件处理程序 -->
+        <button id="submitBtn" type="button" onclick="submitForm()">提交</button>
+    </form>
+
+    <script>
+        // 添加事件处理程序
+        function submitForm() {
+            alert('表单已提交！');
+        }
+    </script>
+</body>
+</html>
