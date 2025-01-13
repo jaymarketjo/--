@@ -6,6 +6,8 @@
 # 使用help()获取特定功能的详细信息
 #help(math.sqrt)
 
+#print(math.sqrt(16))  # 使用math模块中的sqrt函数计算平方根
+
 import json
 import math
 
