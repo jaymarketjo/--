@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>滑块验证登录</title>
+<style>
+    .container {
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    #slider {
+        width: 200px;
+        height: 50px;
+        background-color: lightblue;
+        margin: 20px auto;
+        position: relative; /* 设置相对定位，为了让滑块可以相对于父元素进行定位 */
+    }
+    #sliderHandle {
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+        cursor: pointer; /* 鼠标移上去变成手型 */
+        position: absolute; /* 设置绝对定位，为了让滑块可以相对于父元素进行定位 */
+        top: 0; /* 初始位置在父元素的顶部 */
+        left: 0; /* 初始位置在父元素的左侧 */
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>滑动滑块进行验证</h2>
+    <div id="slider">
+        <div id="sliderHandle" onmousedown="startDrag(event)"></div> <!-- 当鼠标按下时触发startDrag函数 -->
+    </div>
+    <button onclick="checkSlider()">验证</button> <!-- 点击按钮时触发checkSlider函数 -->
+    <p id="result"></p>
+</div>
+
+<script>
+    let isVerified = false; // 用于标记是否验证成功
+    let startX = 0; // 用于记录鼠标按下时的初始位置
+
+    function startDrag(event) {
+        let handle = document.getElementById('sliderHandle');
+        startX = event.clientX - handle.offsetLeft; // 计算鼠标按下时的初始位置
+        document.onmousemove = function(event) { // 当鼠标移动时触发匿名函数
+            let newX = event.clientX - startX; // 计算新的滑块位置
+            let slider = document.getElementById('slider');
+            newX = Math.max(0, Math.min(slider.offsetWidth - handle.offsetWidth, newX)); // 限制滑块的移动范围
+            handle.style.left = newX + 'px'; // 设置滑块的新位置
+        };
+        document.onmouseup = function() { // 当鼠标松开时触发匿名函数
+            document.onmousemove = null; // 停止监听鼠标移动事件
+            document.onmouseup = null; // 停止监听鼠标松开事件
+            if (parseInt(handle.style.left) >= slider.offsetWidth - handle.offsetWidth - 5) { // 判断滑块是否达到验证位置
+                isVerified = true; // 验证成功
+            } else {
+                handle.style.left = '0px'; // 滑块返回初始位置
+                isVerified = false; // 验证失败
+            }
+        };
+    }
+
+    function checkSlider() {
+        if (isVerified) {
+            document.getElementById('result').innerText = '验证成功！'; // 显示验证成功信息
+        } else {
+            document.getElementById('result').innerText = '请滑动滑块完成验证。'; // 显示验证失败信息
+        }
+    }
+</script>
+</body>
+</html>
